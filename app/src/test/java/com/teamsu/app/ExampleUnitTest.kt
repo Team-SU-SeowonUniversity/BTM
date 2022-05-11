@@ -1,4 +1,4 @@
-package com.teamsu.braintrainingmorning
+package com.teamsu.app
 
 import org.junit.Test
 

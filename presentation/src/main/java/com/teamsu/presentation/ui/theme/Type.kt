@@ -1,4 +1,4 @@
-package com.teamsu.braintrainingmorning.ui.theme
+package com.teamsu.presentation.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
