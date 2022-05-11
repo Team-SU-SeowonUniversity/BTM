@@ -9,12 +9,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            test()
+
         }
     }
-}
-
-@Composable
-fun test() {
-
 }
