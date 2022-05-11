@@ -15,8 +15,9 @@
         android:theme="@style/Theme.BrainTrainingMorning"
         tools:targetApi="m">
 
+        <activity android:name="com.teamsu.presentation.main.MainActivity"/>
         <activity
-            android:name="com.teamsu.presentation.main.MainActivity"
+            android:name="com.teamsu.presentation.start.StartActivity"
             android:exported="true"
             android:theme="@style/Theme.BrainTrainingMorning">
             <intent-filter>
