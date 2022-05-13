@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BrainTrainingMorning</string>
+    <!-- StartScreen -->
+    <string name="logo">나의"\n"&#160;&#160;두뇌는?</string>
+    <string name="phone_number_hint">휴대폰 번호</string>
+    <string name="login">로그인</string>
 </resources>
