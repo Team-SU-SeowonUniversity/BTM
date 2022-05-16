@@ -4,11 +4,13 @@
     <string name="logo">나의"\n"&#160;&#160;두뇌는?</string>
     <string name="phone_number_hint">휴대폰 번호</string>
     <string name="login">로그인</string>
-    <!-- MainScreen -->
+    <!-- MainScreen, PerceptScreen -->
     <string name="percept">지각</string>
     <string name="memory">기억</string>
     <string name="instinctive">직감</string>
     <string name="calculation">계산</string>
     <string name="analysis">분석</string>
     <string name="state">상태</string>
+    <!-- PerceptScreen -->
+    <string name="fit_a_fragmented_photo">조각난 사진 맞추기</string>
 </resources>
