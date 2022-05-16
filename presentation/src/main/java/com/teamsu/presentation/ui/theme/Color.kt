@@ -9,3 +9,4 @@ val Teal200 = Color(0xFF03DAC5)
 
 val BackgroundColor = Color(0xFF6D8764)
 val MainButtonColor = Color(0xFFC3F4EC) // MainScreen
+val QuizButtonColor = Color(0xFFBDBDBD) // Component
