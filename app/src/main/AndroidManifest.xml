@@ -14,7 +14,7 @@
         android:theme="@style/Theme.BrainTrainingMorning"
         tools:targetApi="m">
 
-        <activity android:name="com.teamsu.presentation.main.percept.PerceptActivity"/>
+        <activity android:name="com.teamsu.presentation.main.zone.GameZoneActivity"/>
         <activity android:name="com.teamsu.presentation.main.MainActivity"/>
         <activity
             android:name="com.teamsu.presentation.start.StartActivity"

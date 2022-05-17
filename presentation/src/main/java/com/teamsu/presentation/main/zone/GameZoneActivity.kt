@@ -1,4 +1,4 @@
-package com.teamsu.presentation.main.percept
+package com.teamsu.presentation.main.zone
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,7 +7,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
-class PerceptActivity : ComponentActivity() {
+class GameZoneActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -17,7 +17,7 @@ class PerceptActivity : ComponentActivity() {
                     color = Color.Black
                 )
             }
-            PerceptScreen()
+            GameZoneScreen()
         }
     }
 }
