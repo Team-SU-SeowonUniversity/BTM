@@ -1,4 +1,4 @@
-package com.teamsu.presentation.main.zone
+package com.teamsu.presentation.main.zone.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -22,27 +22,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.teamsu.presentation.R
-import com.teamsu.presentation.main.MainNavigation
-import com.teamsu.presentation.main.zone.components.GameCard
 import com.teamsu.presentation.ui.theme.BackgroundColor
 import com.teamsu.presentation.ui.theme.songMyung
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-internal fun GameZoneScreen(
+fun GameZoneScreen(
     zoneName: String,
-    navController: NavController
+    navController: NavController,
+    gameName: List<String>,
+    gameThumbnail: List<Painter>
 ) {
-    val gameName = listOf(stringResource(id = R.string.fit_a_fragmented_photo))
-    val gameThumbnail = listOf(painterResource(id = R.drawable.back))
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -64,7 +61,7 @@ internal fun GameZoneScreen(
             Spacer(modifier = Modifier.width(5.dp))
 
             Text(
-                text =  zoneName, // stringResource(id = R.string.perception)
+                text =  zoneName,
                 color = Color.White,
                 fontSize = 30.sp,
                 fontFamily = songMyung,
