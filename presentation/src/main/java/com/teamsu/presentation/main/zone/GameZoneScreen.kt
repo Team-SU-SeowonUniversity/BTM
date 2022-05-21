@@ -25,18 +25,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.teamsu.presentation.R
+import com.teamsu.presentation.main.MainNavigation
 import com.teamsu.presentation.main.zone.components.GameCard
 import com.teamsu.presentation.ui.theme.BackgroundColor
 import com.teamsu.presentation.ui.theme.songMyung
 
 @OptIn(ExperimentalFoundationApi::class)
-@Preview
 @Composable
-internal fun GameZoneScreen() {
+internal fun GameZoneScreen(
+    zoneName: String,
+    navController: NavController
+) {
     val gameName = listOf(stringResource(id = R.string.fit_a_fragmented_photo))
     val gameThumbnail = listOf(painterResource(id = R.drawable.back))
 
@@ -50,7 +53,7 @@ internal fun GameZoneScreen() {
             modifier = Modifier.padding(top = 20.dp)
         ) {
             IconButton(
-                onClick = { }
+                onClick = { navController.navigate(MainNavigation.MAIN.route) }
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.back),
@@ -61,7 +64,7 @@ internal fun GameZoneScreen() {
             Spacer(modifier = Modifier.width(5.dp))
 
             Text(
-                text =  stringResource(id = R.string.percept),
+                text =  zoneName, // stringResource(id = R.string.perception)
                 color = Color.White,
                 fontSize = 30.sp,
                 fontFamily = songMyung,

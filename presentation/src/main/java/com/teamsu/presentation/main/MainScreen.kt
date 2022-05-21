@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.teamsu.presentation.R
 import com.teamsu.presentation.main.components.CustomMainButton
 import com.teamsu.presentation.ui.theme.BackgroundColor
@@ -29,16 +30,10 @@ import com.teamsu.presentation.ui.theme.songMyung
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-internal fun MainScreen() {
-    val buttonText = listOf(
-        stringResource(id = R.string.percept),
-        stringResource(id = R.string.memory),
-        stringResource(id = R.string.instinctive),
-        stringResource(id = R.string.calculation),
-        stringResource(id = R.string.analysis),
-        stringResource(id = R.string.state),
-    )
-
+internal fun MainScreen(
+    navController: NavController,
+    buttonText: List<String>
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -85,7 +80,7 @@ internal fun MainScreen() {
             horizontalArrangement = Arrangement.spacedBy(30.dp)
         ) {
             items(buttonText.size) { index ->
-                CustomMainButton(textValue = buttonText[index])
+                CustomMainButton(zoneName = buttonText[index], navController = navController)
             }
         }
     }

@@ -26,6 +26,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
@@ -33,15 +34,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.teamsu.presentation.R
 import com.teamsu.presentation.ui.theme.BackgroundColor
 import com.teamsu.presentation.ui.theme.naNumPenScript
 
-
-@Preview
 @Composable
 internal fun StartScreen() {
     val (phoneNumber, setPhoneNumber) = remember { mutableStateOf("")}
@@ -55,12 +54,14 @@ internal fun StartScreen() {
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
         LogoText(logo = stringResource(id = R.string.logo))
+
         PhoneNumberEdit(
             hintText = stringResource(id = R.string.phone_number_hint),
             phoneNumber = phoneNumber,
             setPhoneNumber = setPhoneNumber,
             keyboardController = keyboardController
         )
+
         LoginButton(loginText = stringResource(id = R.string.login))
     }
 }
@@ -69,8 +70,10 @@ internal fun StartScreen() {
 fun LoginButton(
     loginText: String
 ) {
+    val context = LocalContext.current
+
     TextButton(
-        onClick = { }
+        onClick = { (context as? StartActivity)?.startMain() }
     ) {
         Text(
             text = loginText,
