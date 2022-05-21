@@ -32,8 +32,16 @@ import com.teamsu.presentation.ui.theme.songMyung
 @Composable
 internal fun MainScreen(
     navController: NavController,
-    buttonText: List<String>
 ) {
+    val buttonText = listOf(
+        stringResource(id = R.string.perception),
+        stringResource(id = R.string.memory),
+        stringResource(id = R.string.instinctive),
+        stringResource(id = R.string.calculation),
+        stringResource(id = R.string.analysis),
+        stringResource(id = R.string.state),
+    )
+
     Column(
         modifier = Modifier
             .fillMaxSize()
