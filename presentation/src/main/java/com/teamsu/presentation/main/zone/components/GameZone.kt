@@ -34,7 +34,7 @@ import com.teamsu.presentation.ui.theme.songMyung
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun GameZoneScreen(
+fun GameZone(
     zoneName: String,
     navController: NavController,
     gameName: List<String>,
