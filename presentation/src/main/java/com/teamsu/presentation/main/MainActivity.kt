@@ -5,13 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.teamsu.presentation.R
-import com.teamsu.presentation.main.zone.GameZoneScreen
+import com.teamsu.presentation.main.zone.analysis.AnalysisScreen
+import com.teamsu.presentation.main.zone.calculation.CalculationScreen
+import com.teamsu.presentation.main.zone.instinctive.InstinctiveScreen
+import com.teamsu.presentation.main.zone.memory.MemoryScreen
+import com.teamsu.presentation.main.zone.perception.PerceptionScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,36 +28,27 @@ class MainActivity : ComponentActivity() {
                 )
             }
 
-            val buttonText = listOf(
-                stringResource(id = R.string.perception),
-                stringResource(id = R.string.memory),
-                stringResource(id = R.string.instinctive),
-                stringResource(id = R.string.calculation),
-                stringResource(id = R.string.analysis),
-                stringResource(id = R.string.state),
-            )
-
             NavHost(
                 navController = navController,
                 startDestination = MainNavigation.MAIN.route
             ) {
                 composable(route = MainNavigation.MAIN.route) {
-                    MainScreen(navController = navController, buttonText = buttonText)
+                    MainScreen(navController = navController)
                 }
                 composable(route = MainNavigation.PERCEPTION.route) {
-                    GameZoneScreen(zoneName = buttonText[0], navController = navController)
+                    PerceptionScreen(navController = navController)
                 }
                 composable(route = MainNavigation.MEMORY.route) {
-                    GameZoneScreen(zoneName = buttonText[1], navController = navController)
+                    MemoryScreen(navController = navController)
                 }
                 composable(route = MainNavigation.INSTINCTIVE.route) {
-                    GameZoneScreen(zoneName = buttonText[2], navController = navController)
+                    InstinctiveScreen(navController = navController)
                 }
                 composable(route = MainNavigation.CALCULATION.route) {
-                    GameZoneScreen(zoneName = buttonText[3], navController = navController)
+                    CalculationScreen(navController = navController)
                 }
                 composable(route = MainNavigation.ANALYSIS.route) {
-                    GameZoneScreen(zoneName = buttonText[4], navController = navController)
+                    AnalysisScreen(navController = navController)
                 }
                 composable(route = MainNavigation.STATE.route) {
                 }

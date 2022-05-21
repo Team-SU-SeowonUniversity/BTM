@@ -11,6 +11,14 @@
     <string name="calculation">계산</string>
     <string name="analysis">분석</string>
     <string name="state">상태</string>
-    <!-- GameZoneScreen -->
-    <string name="fit_a_fragmented_photo">조각난 사진 맞추기</string>
+    <!-- PerceptionScreen -->
+    <string name="shadow_matching">그림자 맞추기</string>
+    <!-- MemoryScreen -->
+    <string name="aligning_the_lights">불빛 순서 맞추기</string>
+    <!-- InstinctiveScreen -->
+    <string name="capturing_the_moment">순간 포착</string>
+    <!-- CalculationScreen -->
+    <string name="adjusting_the_Amount_of_Water">물의 양 맞추기</string>
+    <!-- analysisScreen -->
+    <string name="matching_formulas">수식 맞추기</string>
 </resources>
