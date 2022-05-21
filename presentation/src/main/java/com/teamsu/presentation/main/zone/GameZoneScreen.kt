@@ -53,7 +53,7 @@ internal fun GameZoneScreen(
             modifier = Modifier.padding(top = 20.dp)
         ) {
             IconButton(
-                onClick = { navController.navigate(MainNavigation.MAIN.route) }
+                onClick = { navController.navigateUp() }
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.back),
