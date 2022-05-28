@@ -2,7 +2,6 @@ package com.teamsu.presentation.main.zone.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,6 +22,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.teamsu.presentation.ui.theme.QuizButtonColor
 import com.teamsu.presentation.ui.theme.songMyung
 
@@ -30,16 +30,17 @@ import com.teamsu.presentation.ui.theme.songMyung
 @Composable
 fun GameCard(
     image: Painter,
-    textValue: String
+    textValue: String,
+    navController: NavController,
+    route: String,
 ) {
     Card(
         modifier = Modifier
             .clip(RoundedCornerShape(20.dp))
             .width(150.dp)
-            .height(200.dp)
-            .clickable { },
+            .height(200.dp),
         backgroundColor = QuizButtonColor,
-        onClick = { }
+        onClick = { navController.navigate(route) }
     ) {
         Image(
             painter = image,

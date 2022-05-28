@@ -25,7 +25,7 @@ fun CustomMainButton(
 ) {
     Button(
         onClick = {
-            when(zoneName) {
+            when (zoneName) {
                 "지각" ->
                     navController.navigate(MainNavigation.PERCEPTION.route)
                 "기억" ->

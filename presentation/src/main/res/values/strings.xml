@@ -21,4 +21,6 @@
     <string name="adjusting_the_Amount_of_Water">물의 양 맞추기</string>
     <!-- analysisScreen -->
     <string name="matching_formulas">수식 맞추기</string>
+    <!-- Answer -->
+    <string name="answer">정답</string>
 </resources>

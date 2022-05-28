@@ -1,4 +1,4 @@
-package com.teamsu.presentation.main.zone.instinctive
+package com.teamsu.presentation.main.zone.gamezone.calculation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
@@ -8,16 +8,16 @@ import com.teamsu.presentation.R
 import com.teamsu.presentation.main.zone.components.GameZone
 
 @Composable
-internal fun InstinctiveScreen(
+internal fun CalculationScreen(
     navController: NavController
 ) {
-    val gameName = listOf(stringResource(id = R.string.capturing_the_moment))
+    val gameName = listOf(stringResource(id = R.string.adjusting_the_Amount_of_Water))
     val gameThumbnail = listOf(painterResource(id = R.drawable.back))
 
-    GameZone(
-        zoneName = stringResource(id = R.string.instinctive),
+    /*GameZone(
+        zoneName = stringResource(id = R.string.memory),
         navController = navController,
         gameName = gameName,
         gameThumbnail = gameThumbnail
-    )
+    )*/
 }

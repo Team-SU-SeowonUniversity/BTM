@@ -1,6 +1,5 @@
 package com.teamsu.presentation.main
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,8 +7,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -28,7 +27,6 @@ import com.teamsu.presentation.main.components.CustomMainButton
 import com.teamsu.presentation.ui.theme.BackgroundColor
 import com.teamsu.presentation.ui.theme.songMyung
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun MainScreen(
     navController: NavController,
@@ -81,7 +79,7 @@ internal fun MainScreen(
         Spacer(modifier = Modifier.height(40.dp))
 
         LazyVerticalGrid(
-            cells = GridCells.Fixed(2),
+            columns = GridCells.Fixed(2),
             userScrollEnabled = false,
             contentPadding = PaddingValues(start = 50.dp, end = 50.dp),
             verticalArrangement = Arrangement.spacedBy(20.dp),

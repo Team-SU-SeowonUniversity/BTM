@@ -1,6 +1,5 @@
 package com.teamsu.presentation.main.zone.components
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -13,8 +12,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.Divider
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -32,13 +31,13 @@ import com.teamsu.presentation.R
 import com.teamsu.presentation.ui.theme.BackgroundColor
 import com.teamsu.presentation.ui.theme.songMyung
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun GameZone(
     zoneName: String,
     navController: NavController,
     gameName: List<String>,
-    gameThumbnail: List<Painter>
+    gameThumbnail: List<Painter>,
+    route: List<String>,
 ) {
     Column(
         modifier = Modifier
@@ -50,11 +49,11 @@ fun GameZone(
             modifier = Modifier.padding(top = 20.dp)
         ) {
             IconButton(
-                onClick = { navController.navigateUp() }
+                onClick = { navController.popBackStack() }
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.back),
-                    contentDescription = "back button"
+                    contentDescription = "go to main"
                 )
             }
 
@@ -82,7 +81,7 @@ fun GameZone(
         Spacer(modifier = Modifier.height(20.dp))
 
         LazyVerticalGrid(
-            cells = GridCells.Fixed(2),
+            columns = GridCells.Fixed(2),
             contentPadding = PaddingValues(start = 15.dp, end = 15.dp),
             verticalArrangement = Arrangement.spacedBy(20.dp),
             horizontalArrangement = Arrangement.spacedBy(30.dp)
@@ -90,7 +89,9 @@ fun GameZone(
             items(gameName.size) { index ->
                 GameCard(
                     image = gameThumbnail[index],
-                    textValue = gameName[index]
+                    navController = navController,
+                    textValue = gameName[index],
+                    route = route[index]
                 )
             }
         }
