@@ -42,20 +42,20 @@ internal fun ShadowMatching(
     shadowMatchingViewModel: ShadowMatchingViewModel
 ) {
     val shadowImage = listOf(
-        painterResource(id = R.drawable.test_one),
-        painterResource(id = R.drawable.timer),
-        painterResource(id = R.drawable.nyang),
-        painterResource(id = R.drawable.back),
-        painterResource(id = R.drawable.test_two)
+        painterResource(id = R.drawable.shadow_1),
+        painterResource(id = R.drawable.shadow_2),
+        painterResource(id = R.drawable.shadow_3),
+        painterResource(id = R.drawable.shadow_4),
+        painterResource(id = R.drawable.shadow_5)
     )
     val generalImage = listOf(
-        painterResource(id = R.drawable.test_one),
-        painterResource(id = R.drawable.timer),
-        painterResource(id = R.drawable.nyang),
-        painterResource(id = R.drawable.back),
-        painterResource(id = R.drawable.test_two)
+        painterResource(id = R.drawable.general_1),
+        painterResource(id = R.drawable.general_2),
+        painterResource(id = R.drawable.general_3),
+        painterResource(id = R.drawable.general_4),
+        painterResource(id = R.drawable.general_5)
     )
-    val count = 3
+    val count = 5
 
     LaunchedEffect(true){
         countDownViewModel.start(count)
