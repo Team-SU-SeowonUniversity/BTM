@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.teamsu.presentation.R
 import com.teamsu.presentation.main.MainNavigation
 import com.teamsu.presentation.main.zone.components.GameZone
