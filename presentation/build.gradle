@@ -52,6 +52,7 @@ dependencies {
     implementation "androidx.hilt:hilt-navigation-compose:$hilt_navigation_compose_version"
     implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
     implementation "androidx.navigation:navigation-compose:$nav_version"
+    implementation "com.github.skydoves:landscapist-coil:$coil_version"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -65,4 +66,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$compose_version"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    debugImplementation "androidx.customview:customview:1.2.0-alpha01"
+    debugImplementation "androidx.customview:customview-poolingcontainer:1.0.0-alpha01"
 }

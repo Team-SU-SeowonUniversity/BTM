@@ -10,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.teamsu.presentation.main.zone.StateScreen
 import com.teamsu.presentation.main.zone.gamezone.analysis.AnalysisScreen
 import com.teamsu.presentation.main.zone.gamezone.calculation.CalculationScreen
 import com.teamsu.presentation.main.zone.gamezone.instinctive.InstinctiveScreen
@@ -70,6 +71,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 composable(route = MainNavigation.STATE.route) {
+                    StateScreen(navController = navController)
                 }
             }
         }
