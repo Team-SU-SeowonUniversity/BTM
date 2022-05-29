@@ -117,7 +117,7 @@ fun ViewButton(
             .clip(RoundedCornerShape(20.dp))
             .width(150.dp)
             .height(130.dp),
-        backgroundColor = QuizButtonColor,
+        backgroundColor = BackgroundColor,
         onClick = { }
     ) {
         Image(
