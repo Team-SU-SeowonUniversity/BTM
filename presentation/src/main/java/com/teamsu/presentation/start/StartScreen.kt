@@ -31,6 +31,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -53,7 +54,17 @@ internal fun StartScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
-        LogoText(logo = stringResource(id = R.string.logo))
+        Text(
+            text = buildAnnotatedString {
+                append("뇌를\n")
+                append(" 훈련하는\n")
+                append("  아침")
+            },
+            color = Color.Black,
+            fontSize = 80.sp,
+            fontFamily = naNumPenScript,
+            fontWeight = FontWeight.Normal
+        )
 
         PhoneNumberEdit(
             hintText = stringResource(id = R.string.phone_number_hint),
@@ -129,17 +140,4 @@ fun PhoneNumberEdit(
             )
         }
     }
-}
-
-@Composable
-fun LogoText(
-    logo: String,
-) {
-    Text(
-        text = logo,
-        color = Color.Black,
-        fontSize = 80.sp,
-        fontFamily = naNumPenScript,
-        fontWeight = FontWeight.Normal
-    )
 }
