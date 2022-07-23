@@ -3,7 +3,10 @@
     <!-- StartScreen -->
     <string name="logo">나의"\n"&#160;&#160;두뇌는?</string>
     <string name="phone_number_hint">휴대폰 번호</string>
+    <string name="id_hint">아이디</string>
+    <string name="password_hint">비밀번호</string>
     <string name="login">로그인</string>
+    <string name="signup">회원가입</string>
     <!-- MainScreen -->
     <string name="perception">지각</string>
     <string name="memory">기억</string>
