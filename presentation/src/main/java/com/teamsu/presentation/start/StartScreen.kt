@@ -1,145 +1,175 @@
-@file:OptIn(ExperimentalComposeUiApi::class)
+@file:OptIn(ExperimentalComposeUiApi::class, ExperimentalPagerApi::class)
 
 package com.teamsu.presentation.start
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Tab
+import androidx.compose.material.TabRow
+import androidx.compose.material.TabRowDefaults
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.pagerTabIndicatorOffset
+import com.google.accompanist.pager.rememberPagerState
 import com.teamsu.presentation.R
+import com.teamsu.presentation.start.components.ManagerTextField
+import com.teamsu.presentation.start.components.SeniorLoginTextField
 import com.teamsu.presentation.ui.theme.BackgroundColor
 import com.teamsu.presentation.ui.theme.naNumPenScript
+import kotlinx.coroutines.launch
 
+@Preview
 @Composable
 internal fun StartScreen() {
-    val (phoneNumber, setPhoneNumber) = remember { mutableStateOf("")}
+    val (phoneNumber, setPhoneNumber) = remember { mutableStateOf("") }
+    val (id, setId) = remember { mutableStateOf("") }
+    val (password, setPassword) = remember { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
+    val pagerState = rememberPagerState(pageCount = 2)
+    val tabList = listOf("노약자", "관리자")
+    val scope = rememberCoroutineScope()
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(BackgroundColor),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceEvenly
-    ) {
-        LogoText(logo = stringResource(id = R.string.logo))
-
-        PhoneNumberEdit(
-            hintText = stringResource(id = R.string.phone_number_hint),
-            phoneNumber = phoneNumber,
-            setPhoneNumber = setPhoneNumber,
-            keyboardController = keyboardController
-        )
-
-        LoginButton(loginText = stringResource(id = R.string.login))
-    }
-}
-
-@Composable
-fun LoginButton(
-    loginText: String
-) {
-    val context = LocalContext.current
-
-    TextButton(
-        onClick = { (context as? StartActivity)?.startMain() }
+        verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = loginText,
+            text = buildAnnotatedString {
+                append("뇌를\n")
+                append(" 훈련하는\n")
+                append("  아침")
+            },
             color = Color.Black,
-            fontSize = 50.sp,
+            fontSize = 60.sp,
             fontFamily = naNumPenScript,
             fontWeight = FontWeight.Normal
         )
-    }
-}
 
-@Composable
-fun PhoneNumberEdit(
-    hintText: String,
-    phoneNumber: String,
-    setPhoneNumber: (String) -> Unit,
-    keyboardController: SoftwareKeyboardController?
-) {
-    Box {
-        BasicTextField(
-            value = phoneNumber,
-            onValueChange = setPhoneNumber,
-            textStyle = TextStyle(
-                fontSize = 20.sp,
-            ),
-            modifier = Modifier
-                .width(250.dp)
-                .height(40.dp)
-                .clip(RoundedCornerShape(5.dp)),
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Done),
-            keyboardActions = KeyboardActions(onDone = { keyboardController?.hide() }),
-            decorationBox = { innerTextField ->
-                Row(
-                    Modifier
-                        .background(Color.White)
-                        .padding(start = 10.dp, end = 10.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    innerTextField()
+        Spacer(modifier = Modifier.height(20.dp))
+
+        TabRow(
+            modifier = Modifier.width(250.dp),
+            selectedTabIndex = pagerState.currentPage,
+            indicator = { tabPositions ->
+                TabRowDefaults.Indicator(
+                    Modifier.pagerTabIndicatorOffset(pagerState, tabPositions),
+                    height = 2.dp,
+                    color = Color.White
+                )
+            }
+        ) {
+            tabList.forEachIndexed { index, _ ->
+                Tab(
+                    selected = pagerState.currentPage == index,
+                    text = {
+                        Text(
+                            text = tabList[index],
+                            fontSize = 18.sp,
+                            color = if (pagerState.currentPage == index) Color.White else Color.LightGray
+                        )
+                    },
+                    onClick = {
+                        scope.launch {
+                            pagerState.animateScrollToPage(index)
+                        }
+                    }
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        HorizontalPager(
+            state = pagerState,
+            itemSpacing = 40.dp
+        ) { page ->
+            when (page) {
+                0 -> SeniorLoginTextField(
+                    hintText = stringResource(id = R.string.phone_number_hint),
+                    value = phoneNumber,
+                    setValue = setPhoneNumber,
+                    keyboardController = keyboardController,
+                    page = page
+                )
+
+                1 -> Column {
+                    ManagerTextField(
+                        hintText = stringResource(id = R.string.id_hint),
+                        value = id,
+                        setValue = setId,
+                        keyboardController = keyboardController,
+                        passwordInput = false
+                    )
+
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    ManagerTextField(
+                        hintText = stringResource(id = R.string.password_hint),
+                        value = password,
+                        setValue = setPassword,
+                        keyboardController = keyboardController,
+                        passwordInput = true
+                    )
                 }
-            },
-        )
-        if (phoneNumber.isEmpty()) {
-            Text(
-                modifier = Modifier.offset(x = 10.dp, y = 11.dp),
-                text = hintText,
-                fontFamily = naNumPenScript,
-                color = Color.Gray,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold
-            )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(50.dp))
+
+        Row {
+            TextButton(
+                onClick = { (context as? StartActivity)?.startMain() }
+            ) {
+                Text(
+                    text = stringResource(id = R.string.login),
+                    color = Color.Black,
+                    fontSize = 40.sp,
+                    fontFamily = naNumPenScript,
+                    fontWeight = FontWeight.Normal
+                )
+            }
+
+            Spacer(modifier = Modifier.width(30.dp))
+
+            TextButton(
+                onClick = { }
+            ) {
+                Text(
+                    text = stringResource(id = R.string.signup),
+                    color = Color.Black,
+                    fontSize = 40.sp,
+                    fontFamily = naNumPenScript,
+                    fontWeight = FontWeight.Normal
+                )
+            }
         }
     }
-}
-
-@Composable
-fun LogoText(
-    logo: String,
-) {
-    Text(
-        text = logo,
-        color = Color.Black,
-        fontSize = 80.sp,
-        fontFamily = naNumPenScript,
-        fontWeight = FontWeight.Normal
-    )
 }
